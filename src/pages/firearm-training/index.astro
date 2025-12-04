@@ -1,0 +1,26 @@
+---
+import PageHeader from "@/components/PageHeader/PageHeader.astro";
+import siteData from "@/config/siteData.json";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import CourseCard from "@/components/CourseCard/CourseCard.astro";
+import IframeComponent from "@/components/IframeComponent/IframeComponent.astro";
+const trainingItems = await getCollection("trainings");
+---
+
+<BaseLayout title={"Firearm Training - " + siteData.title} description={siteData.description}>
+	<PageHeader title="We Offer A Variety Of Training Courses As Well As One-On-One Instruction">
+		<hr class="bg-primary-600/50 mx-auto mt-4 max-w-[30%] rounded-full border-none pt-1" />
+	</PageHeader>
+	<div class="site-container mx-auto px-4 pt-16">
+		<CourseCard />
+		<div class="site-container py-16 text-center md:py-24" id="iframe">
+			<IframeComponent
+				height={900}
+				width="1200"
+				src="https://instructorsdash.com/lisa-chau/categories/all?view=iframe"
+			/>
+		</div>
+	</div>
+</BaseLayout>

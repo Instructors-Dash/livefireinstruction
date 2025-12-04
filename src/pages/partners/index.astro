@@ -1,0 +1,15 @@
+---
+import siteData from "@/config/siteData.json";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PartnersCard from "@/components/PartnersCard/PartnersCard.astro";
+import PageHeader from "@/components/PageHeader/PageHeader.astro";
+---
+
+<BaseLayout title={"Partners - " + siteData.title} description={siteData.description}>
+	<PageHeader title="Partners">
+		<hr class="bg-primary-600/50 mx-auto mt-4 max-w-[30%] rounded-full border-none pt-1" />
+	</PageHeader>
+	<div class="site-container mx-auto px-4 py-16">
+		<PartnersCard />
+	</div>
+</BaseLayout>
