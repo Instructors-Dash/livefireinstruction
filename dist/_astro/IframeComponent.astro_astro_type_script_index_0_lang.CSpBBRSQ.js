@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".iframe-container").forEach(t=>{const e=t.querySelector(".iframe-content"),n=t.querySelector(".loading-skeleton");e&&n&&e.addEventListener("load",()=>{n.style.display="none",e.style.opacity="1"})})});
