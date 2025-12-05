@@ -25,7 +25,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BUILD_PATH: "./dist" # default value when not using subfolders
+  BUILD_PATH: "." # default value when not using subfolders
   # BUILD_PATH: subfolder
 
 jobs:
@@ -69,8 +69,8 @@ jobs:
       - name: Build with Astro
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build \
-            --site "${{ steps.pages.outputs.origin }}" \
-            --base "${{ steps.pages.outputs.base_path }}"
+          --site "${{ steps.pages.outputs.origin }}" \
+          --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
