@@ -16,7 +16,7 @@ export default defineConfig({
 		edgeMiddleware: true,
 	}),
 	output: "static",
-	site: " http://instructors-dash.github.io",
+	site: "https://instructors-dash.github.io",
 	base: "/livefireinstruction",
 	build: {
 		format: "directory",

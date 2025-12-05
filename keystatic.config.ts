@@ -15,7 +15,7 @@ export default config({
 			name: "Admin",
 			mark: () =>
 				React.createElement("img", {
-					src: "https://livefireinstruction.netlify.app/.netlify/images?url=_astro%2FLogo.Bc52i4P5.png",
+					src: "https://instructors-dash.github.io/livefireinstruction/.netlify/images?url=_astro%2FLogo.Bc52i4P5.png",
 					alt: "Live Fire Instruction",
 					style: { width: "100px", height: "auto" },
 				}),
