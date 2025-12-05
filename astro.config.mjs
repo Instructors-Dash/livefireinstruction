@@ -18,6 +18,9 @@ export default defineConfig({
 	output: "static",
 	site: " http://instructors-dash.github.io",
 	base: "/livefireinstruction",
+	build: {
+		format: "directory",
+	},
 	markdown: {
 		shikiConfig: {
 			theme: "dracula",
