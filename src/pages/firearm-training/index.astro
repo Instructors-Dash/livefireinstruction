@@ -14,7 +14,7 @@ const trainingItems = await getCollection("trainings");
 		<hr class="bg-primary-600/50 mx-auto mt-4 max-w-[30%] rounded-full border-none pt-1" />
 	</PageHeader>
 	<div class="site-container mx-auto px-4 pt-16">
-		<CourseCard />
+		<CourseCard trainingItems={trainingItems} />
 		<div class="site-container py-16 text-center md:py-24" id="iframe">
 			<IframeComponent
 				height={900}

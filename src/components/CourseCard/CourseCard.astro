@@ -8,6 +8,7 @@ const course = (await getCollection("trainings")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 const featuredCourse = course.filter((post) => post.data.featured);
+const domain = Astro.url.origin;
 ---
 
 <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -28,7 +29,7 @@ const featuredCourse = course.filter((post) => post.data.featured);
 						<CardHeader className="z-11 relative w-full pb-6">
 							<CardTitle className="font-headline text-xl leading-tight">
 								<a
-									href={`${post.id}`}
+									href={`${domain}/${post.data.slug}`}
 									transition:name={`blog-${post.id}`}
 									class="hover:text-primary-600 text-white transition-colors"
 								>
@@ -42,7 +43,7 @@ const featuredCourse = course.filter((post) => post.data.featured);
 					</CardContent>
 					<div class="p-6 pt-0">
 						<a
-							href={`${post.id}`}
+							href={`${domain}/${post.data.slug}`}
 							class="text-primary inline-flex items-center gap-2 font-semibold transition-all duration-300 group-hover:gap-3"
 						>
 							View course <ArrowRight className="h-4 w-4" />

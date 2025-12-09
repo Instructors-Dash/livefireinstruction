@@ -350,6 +350,10 @@ export default config({
 
 			schema: {
 				title: fields.slug({ name: { label: "Title", validation: { isRequired: true } } }),
+				slug: fields.text({
+					label: "URL Slug (e.g., /sales)",
+					validation: { isRequired: true },
+				}),
 				subtitle: fields.text({
 					label: "Subtitle",
 				}),

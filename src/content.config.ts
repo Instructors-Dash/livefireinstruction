@@ -102,6 +102,7 @@ const trainingCollection = defineCollection({
 		z.object({
 			title: z.string(),
 			subtitle: z.string().optional(),
+			slug: z.string(),
 			pubDate: z
 				.string()
 				.or(z.date())
