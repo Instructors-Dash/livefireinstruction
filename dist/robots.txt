@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://livefireinstruction.netlify.app/sitemap-index.xml
+Sitemap: https://livefireinstruction.com/sitemap-index.xml

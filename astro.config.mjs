@@ -10,17 +10,15 @@ import netlify from "@astrojs/netlify";
 import keystatic from "@keystatic/astro";
 import markdoc from "@astrojs/markdoc";
 
+const isProd = import.meta.env.PROD || import.meta.env.MODE === "production";
+
 // https://astro.build/config
 export default defineConfig({
 	adapter: netlify({
 		edgeMiddleware: true,
 	}),
-	output: "static",
-	site: "https://instructors-dash.github.io",
-	base: "/livefireinstruction",
-	build: {
-		format: "directory",
-	},
+	output: "server",
+	site: isProd ? "https://livefireinstruction.com" : "https://livefireinstructionblog.netlify.app",
 	markdown: {
 		shikiConfig: {
 			theme: "dracula",

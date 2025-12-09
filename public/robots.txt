@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://instructors-dash.github.io/livefireinstruction/sitemap-index.xml
+Sitemap: https://livefireinstruction.com/sitemap-index.xml

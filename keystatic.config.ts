@@ -15,7 +15,9 @@ export default config({
 			name: "Admin",
 			mark: () =>
 				React.createElement("img", {
-					src: "https://instructors-dash.github.io/livefireinstruction/.netlify/images?url=_astro%2FLogo.Bc52i4P5.png",
+					src: isProd
+						? "https://livefireinstruction.com/.netlify/images?url=_astro%2FLogo.Bc52i4P5.png"
+						: "https://livefireinstructionblog.netlify.app/.netlify/images?url=_astro%2FLogo.Bc52i4P5.png",
 					alt: "Live Fire Instruction",
 					style: { width: "100px", height: "auto" },
 				}),
@@ -210,6 +212,7 @@ export default config({
 			label: "Posts",
 			path: "src/data/blog/*/",
 			slugField: "title",
+			previewUrl: "/preview/start?branch={branch}&to=/preview/blog/{slug}",
 			columns: ["pubDate", "updatedDate"],
 			format: { contentField: "content" },
 			schema: {
@@ -344,6 +347,7 @@ export default config({
 			// 	contentField: "emptyContent",
 			// },
 			columns: ["featured", "pubDate"],
+
 			schema: {
 				title: fields.slug({ name: { label: "Title", validation: { isRequired: true } } }),
 				subtitle: fields.text({
