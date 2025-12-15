@@ -4,12 +4,8 @@ import React from "react";
 const isProd = import.meta.env.PROD || import.meta.env.MODE === "production";
 
 export default config({
-	storage: {
-		kind: "cloud",
-	},
-	cloud: {
-		project: "lfiadmin/livefireinstruction",
-	},
+	storage: isProd ? { kind: "cloud" } : { kind: "local" },
+	cloud: isProd ? { project: "lfiadmin/livefireinstruction" } : undefined,
 	ui: {
 		brand: {
 			name: "Admin",
@@ -204,6 +200,18 @@ export default config({
 					label: "Submit Button Text",
 					defaultValue: "Send Message",
 				}),
+				// Testimonials Section
+				testimonials: fields.array(
+					fields.object({
+						name: fields.text({ label: "Name" }),
+						testimonial: fields.text({ label: "Testimonial", multiline: true }),
+					}),
+					// Labelling options
+					{
+						label: "Testimonials",
+						itemLabel: (props) => props.fields.name.value,
+					},
+				),
 			},
 		}),
 	},
@@ -244,7 +252,7 @@ export default config({
 				heroImage: fields.image({
 					label: "Image",
 					directory: "src/assets/images/blog",
-					publicPath: "/src/assets/images/blog/",
+					publicPath: "@assets/images/blog/",
 				}),
 				categories: fields.array(
 					fields.text({ label: "Category", validation: { isRequired: true } }),

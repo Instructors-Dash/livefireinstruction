@@ -27,9 +27,14 @@ type Props = CollectionEntry<"trainings">;
 
 const item = Astro.props;
 const { Content } = await render(item);
+
+const schemaData = {
+	name: item.data.title,
+	description: item.data.description,
+}
 ---
 
-<BaseLayout title={item.data.title + " - " + siteData.title} description={item.data.description}>
+<BaseLayout title={item.data.title + " - " + siteData.title} description={item.data.description} schemaData={schemaData} schemaType="WebPage">
 	<div class="site-container mx-auto px-4">
 		<!-- subtle background gradient effect -->
 		<div

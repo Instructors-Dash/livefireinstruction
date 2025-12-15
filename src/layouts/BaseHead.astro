@@ -72,57 +72,14 @@ import SiteVerification from "@/components/SiteVerification/SiteVerification.ast
 	noindex={noindex}
 />
 
-<Schema
-	item={{
-		"@context": "https://schema.org",
-		"@graph": [
-			{
-				"@type": "BreadcrumbList",
-				"@id": "https://livefireinstruction.com/#breadcrumblist",
-				itemListElement: [
-					{
-						"@type": "ListItem",
-						"@id": "https://livefireinstruction.com/#listItem",
-						position: 1,
-						name: "Home",
-					},
-				],
-			},
-			{
-				"@type": "Organization",
-				"@id": "https://livefireinstruction.com/#organization",
-				name: "Live Fire Instruction",
-				description:
-					"Providing Quality Firearms Instruction For First-Time To Experienced Shooters Through Classroom And Range Courses For Men, Women And Youth",
-				url: "https://livefireinstruction.com/",
-			},
-			{
-				"@type": "WebPage",
-				"@id": "https://livefireinstruction.com/#webpage",
-				url: "https://livefireinstruction.com/",
-				name: "Home - Live Fire Instruction",
-				description:
-					"Get Your Virginia Concealed Carry Permit. Our 6-hour Basics of Pistol Shooting course in Fairfax includes classroom instruction, live range time, and certification. Classes held every Thursday & Saturday. Enroll Now!",
-				inLanguage: "en-US",
-				isPartOf: { "@id": "https://livefireinstruction.com/#website" },
-				breadcrumb: {
-					"@id": "https://livefireinstruction.com/#breadcrumblist",
-				},
-				datePublished: "2017-04-23T14:01:29-04:00",
-				dateModified: "2025-10-31T11:45:56-04:00",
-			},
-			{
-				"@type": "WebSite",
-				"@id": "https://livefireinstruction.com/#website",
-				url: "https://livefireinstruction.com/",
-				name: "Live Fire Instruction",
-				description:
-					"Providing Quality Firearms Instruction For First-Time To Experienced Shooters Through Classroom And Range Courses For Men, Women And Youth",
-				inLanguage: "en-US",
-				publisher: { "@id": "https://livefireinstruction.com/#organization" },
-			},
-		],
-	}}
+<Seo
+	type={type}
+	title={title}
+	description={description}
+	image={image}
+	authors={authors}
+	postFrontmatter={postFrontmatter}
+	noindex={noindex}
 />
 
 <SiteVerification id="euyNlmm5-ZIwsHLNT5_om5GoEKUcqqBkxbYHwN5v3As" />

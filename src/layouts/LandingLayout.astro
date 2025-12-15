@@ -1,6 +1,8 @@
 ---
 import Button from "@/components/Button/Button.astro";
 import GoogleTagmanagerNoscript from "@/components/GoogleTagmanagerNoscript/GoogleTagmanagerNoscript.astro";
+import Schema from "@/components/Schema/Schema.astro";
+const { schemaType = "WebPage", schemaData = {} } = Astro.props;
 import "@/styles/global.css";
 
 import Footer from "@components/Footer/Footer.astro";
@@ -21,6 +23,8 @@ interface Props {
 	postFrontmatter?: CollectionEntry<"blog">["data"];
 	noindex?: boolean; // you need to opt-in to no indexing, as it hides the page from search engines
 	slug?: string;
+	schemaType?: string;
+	schemaData?: any;
 }
 
 const {
@@ -46,6 +50,7 @@ const {
 			postFrontmatter={postFrontmatter ? postFrontmatter : undefined}
 			noindex={noindex}
 		/>
+		<Schema type={schemaType} data={schemaData} />
 	</head>
 	<body id="body">
 		<GoogleTagmanagerNoscript id="GTM-TK2S4T62" />

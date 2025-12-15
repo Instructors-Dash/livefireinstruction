@@ -30,9 +30,23 @@ const iframeUrl =
 	homepage?.iframeUrl || "https://instructorsdash.com/lisa-chau/categories/all?view=iframe";
 const iframeHeight = homepage?.iframeHeight || 900;
 const iframeWidth = homepage?.iframeWidth || "1200";
+
+const schemaData = {
+	name: siteData.title,
+	description: siteData.description,
+	url: siteData.website,
+	telephone: siteData.author.telephone,
+	email: siteData.author.email,
+	address: siteData.address,
+};
 ---
 
-<BaseLayout title={"Home - " + siteData.title} description={siteData.description}>
+<BaseLayout
+	title={"Home - " + siteData.title}
+	description={siteData.description}
+	schemaType="home"
+	schemaData={schemaData}
+>
 	<Hero
 		title={heroTitle}
 		subtitle={heroSubtitle}

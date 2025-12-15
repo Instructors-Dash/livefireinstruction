@@ -14,6 +14,8 @@ import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
 	post: CollectionEntry<"blog">;
+	schemaType?: string;
+	schemaData?: any;
 }
 
 const { post } = Astro.props as Props;
@@ -21,6 +23,19 @@ const { title, description, authors, pubDate, updatedDate, heroImage, categories
 	post.data;
 
 const authorsData = await getAllAuthorsData(authors);
+const schemaData = {
+	headline: post.data.title,
+	url: Astro.url.href,
+	publishedDate: post.data.pubDate?.toISOString() || post.data.date?.toISOString(),
+	keywords: post.data.tags,
+	author: authorsData.map((author) => ({
+		"@type": "Person",
+		name: author.data.name,
+		url: author.data.authorLink,
+	})),
+	image: post.data.heroImage?.src,
+	articleSection: post.data.categories,
+};
 ---
 
 <BaseLayout
@@ -30,6 +45,8 @@ const authorsData = await getAllAuthorsData(authors);
 	description={description}
 	authorsData={authorsData}
 	postFrontmatter={post.data}
+	schemaData={schemaData}
+	schemaType="blogpost"
 >
 	<article class="site-container pt-10 md:pt-24">
 		<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">

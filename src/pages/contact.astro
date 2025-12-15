@@ -27,9 +27,32 @@ const formSubjectPlaceholder = contact?.formSubjectPlaceholder || "How can we he
 const formMessageLabel = contact?.formMessageLabel || "Your Message";
 const formMessagePlaceholder = contact?.formMessagePlaceholder || "Write your message here...";
 const formSubmitButtonText = contact?.formSubmitButtonText || "Send Message";
+
+const schemaData = {
+	name: pagetitle,
+	description: siteData.description,
+	url: Astro.url.href,
+	itemListElement: [
+		{
+			"@type": "ListItem",
+			item: {
+				"@type": "Organization",
+				name: "LiveFire Instruction",
+				url: "https://livefireinstruction.com",
+				email: "class@livefireinstruction.com",
+				telephone: "571.210.5651",
+			},
+		},
+	],
+};
 ---
 
-<BaseLayout title={pagetitle + " - " + siteData.title} description={siteData.description}>
+<BaseLayout
+	title={pagetitle + " - " + siteData.title}
+	description={siteData.description}
+	schemaType="contact"
+	schemaData={schemaData}
+>
 	<PageHeader title="">
 		<div class="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
 			<a href="/firearm-training/">
