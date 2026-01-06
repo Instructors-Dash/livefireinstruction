@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://livefireinstruction.com/sitemap-index.xml
