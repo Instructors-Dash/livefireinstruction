@@ -18,7 +18,6 @@ export default config({
 		: {
 				kind: "local",
 			},
-	cloud: isProd ? { project: "livefireinstruction/prod" } : undefined,
 	ui: {
 		brand: {
 			name: "Admin",
