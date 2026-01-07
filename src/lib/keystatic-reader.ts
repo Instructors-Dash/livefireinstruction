@@ -16,8 +16,8 @@ export function getKeystaticReader() {
 	} else {
 		// Production - read from GitHub
 		return createGitHubReader(keystaticConfig, {
-			repo: "j3rech0/livefireinstruction",
-			token: process.env.GITHUB_PAT,
+			repo: "Instructors-Dash/livefireinstruction",
+			token: import.meta.env.GITHUB_PAT,
 		});
 	}
 }
