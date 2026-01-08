@@ -2,6 +2,7 @@
 export const prerender = true;
 import Button from "@/components/Button/Button.astro";
 import IframeComponent from "@/components/IframeComponent/IframeComponent.astro";
+import LiveSchedule from "@/components/LiveSchedule/LiveSchedule.astro";
 import PageHeader from "@/components/PageHeader/PageHeader.astro";
 import siteData from "@/config/siteData.json";
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -151,21 +152,7 @@ const schemaData = {
 								</div>
 							</div>
 
-							<div class="flex items-start gap-4">
-								<div class="text-primary rounded-lg bg-orange-50 p-3">
-									<Navigation className="text-primary mt-0.5 h-5 w-5 flex-shrink-0" />
-								</div>
-								<div>
-									<p class="font-semibold text-gray-900">Directions</p>
-									<a
-										href={item.data.hasMap.value.mapLink}
-										target="_blank"
-										class="text-primary underline transition-colors hover:text-orange-600"
-									>
-										Open in Google Maps &rarr;
-									</a>
-								</div>
-							</div>
+							
 						</div>
 					</div>
 
@@ -191,15 +178,7 @@ const schemaData = {
 		<div class="site-container mx-auto px-4 text-center">
 			<Content />
 		</div>
-		{item.data.iframeUrl && (
-			<div class="site-container text-center" id="iframe">
-				<IframeComponent
-					height={item.data.iframeHeight}
-					width={item.data.iframeWidth}
-					src={item.data.iframeUrl}
-				/>
-			</div>
-		)}
+		<LiveSchedule category="133" />
 </BaseLayout>
 
 <style is:inline>

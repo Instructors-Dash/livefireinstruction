@@ -5,6 +5,8 @@ import Category from "@components/Category/Category.astro";
 import { Image } from "astro:assets";
 import { Radar } from "lucide-react";
 import Homepage from "@images/Homepage.png";
+import Feeds from "./Feeds.astro";
+import FeedsSkeleton from "./FeedsSkeleton.astro";
 
 interface Props {
 	title: string;
@@ -20,7 +22,7 @@ const { title, subtitle, ctaText, ctaLink, secondaryCtaText, secondaryCtaLink } 
 
 <section
 	id="hero"
-	class="relative flex h-[70vh] w-full items-center justify-center text-white md:h-[85vh]"
+	class="relative flex w-full items-center justify-center pb-14 text-white lg:h-[85vh]"
 >
 	<Image
 		src={Homepage}
@@ -40,32 +42,38 @@ const { title, subtitle, ctaText, ctaLink, secondaryCtaText, secondaryCtaLink } 
 	/>
 
 	<div class="bg-blue/70 absolute inset-0"></div>
-	<div class="relative z-10 mx-auto max-w-4xl p-4 text-center">
-		<h1
-			class="font-headline animate-fade-in-up mb-6 text-4xl font-bold tracking-wide opacity-0 md:text-6xl md:leading-[1.3] lg:text-7xl lg:leading-[1.3]"
-		>
-			{title}
-		</h1>
-		<p
-			class="animate-fade-in-up animation-delay-300 mx-auto mb-8 max-w-2xl text-lg text-blue-100 opacity-0 md:text-xl"
-		>
-			{subtitle}
-		</p>
-		<div
-			class="animate-fade-in-up animation-delay-600 mx-auto flex max-w-max flex-col justify-center gap-4 opacity-0 sm:flex-row"
-		>
-			<Button variant="primary" href={ctaLink} class="mx-auto gap-4 px-5 py-4 text-base">
-				<Radar />
-				{ctaText}
-			</Button>
-
-			<Button
-				variant="ghost"
-				href={secondaryCtaLink}
-				arrow="right"
-				class="gap-2 text-base text-white">{secondaryCtaText}</Button
+	<div class="site-container flex w-full flex-col items-center justify-between gap-14 md:flex-row">
+		<div class="relative z-10 mx-auto mt-12 max-w-4xl space-y-6 text-center md:w-3/5 md:text-left">
+			<h1
+				class="font-headline animate-fade-in-up mb-6 text-4xl font-bold tracking-wide opacity-0 md:text-6xl md:leading-[1.3] lg:text-7xl lg:leading-[1.3]"
 			>
+				{title}
+			</h1>
+			<p
+				class="animate-fade-in-up animation-delay-300 mb-8 text-lg text-blue-100 opacity-0 md:mb-10 md:text-xl"
+			>
+				{subtitle}
+			</p>
+			<div
+				class="animate-fade-in-up animation-delay-600 mx-auto flex max-w-max flex-col gap-4 opacity-0 sm:flex-row md:mx-0"
+			>
+				<Button variant="primary" href={ctaLink} class="mx-auto gap-4 px-5 py-4 text-base">
+					<Radar />
+					{ctaText}
+				</Button>
+
+				<Button
+					variant="ghost"
+					href={secondaryCtaLink}
+					arrow="right"
+					class="gap-2 text-base text-white">{secondaryCtaText}</Button
+				>
+			</div>
 		</div>
+		<!-- Next -->
+		<Feeds server:defer>
+			<FeedsSkeleton slot="fallback" />
+		</Feeds>
 	</div>
 </section>
 

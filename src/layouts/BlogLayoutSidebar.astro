@@ -11,6 +11,7 @@ import { Icon } from "astro-icon/components";
 import BlogPostRelatedPosts from "@components/BlogPostRelatedPosts.astro";
 
 import BaseLayout from "./BaseLayout.astro";
+import siteData from "@/config/siteData.json";
 
 interface Props {
 	post: CollectionEntry<"blog">;
@@ -40,9 +41,9 @@ const schemaData = {
 
 <BaseLayout
 	type="blog"
-	title={title}
+	title={title + " | " + siteData.title}
 	heroImage={heroImage}
-	description={description}
+	description={description.slice(0, 150) + "..."}
 	authorsData={authorsData}
 	postFrontmatter={post.data}
 	schemaData={schemaData}

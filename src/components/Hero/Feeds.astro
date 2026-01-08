@@ -1,0 +1,260 @@
+---
+import Button from "@components/Button/Button.astro";
+
+import { getKeystaticReader } from "@/lib/keystatic-reader";
+const reader = getKeystaticReader();
+const homepage = await reader.singletons.homepage.read();
+const nextClassStartingSoonTitle =
+	homepage?.nextClassStartingSoonTitle || "Next Class Starting Soon";
+const nextClassStartingSoonSubtitle = homepage?.nextClassStartingSoonSubtitle || "Seats Limited";
+const nextClassStartingArray = homepage?.nextClassStartingArray || [];
+
+// Fetch next up to 3 upcoming classes for the sidebar
+let nextClasses = [];
+try {
+	const response = await fetch("https://instructorsdash.com/api/public/events/livefireinstruction");
+	if (response.ok) {
+		const data = await response.json();
+		nextClasses = data.events?.data?.slice(0, 3) || [];
+	}
+} catch (error) {
+	console.error("Error fetching events for Hero Feed:", error);
+}
+
+const formatDate = (dateStr: string) => {
+	const date = new Date(dateStr);
+	return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+};
+
+const formatTime = (dateStr: string) => {
+	const date = new Date(dateStr);
+	return date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", hour12: true });
+};
+---
+
+<div class="relative mt-0 md:block md:w-2/5">
+	<div class="relative mr-4 ml-auto w-full max-w-md">
+		<div
+			class="absolute inset-0 rounded-full bg-gradient-to-br from-red-600/20 to-transparent blur-2xl"
+		>
+		</div>
+		<div
+			class="group hover:border-primary-600/50 relative z-10 flex h-full w-full flex-col justify-between overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/50 p-6 backdrop-blur-md transition-colors"
+		>
+			<div class="absolute top-0 right-0 p-4 opacity-10">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="200"
+					height="200"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					class="lucide lucide-target text-white"
+					aria-hidden="true"
+					><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle
+						cx="12"
+						cy="12"
+						r="2"></circle></svg
+				>
+			</div><div>
+				<h3 class="mb-2 text-xl font-bold text-white">
+					{nextClassStartingSoonTitle}
+				</h3><div class="text-primary-600 mb-4 font-mono text-sm uppercase">
+					{nextClassStartingSoonSubtitle}
+				</div>
+			</div>
+			<div class="space-y-3">
+				{
+					nextClassStartingArray.map((item, index) => (
+						<div class="flex items-center gap-3 text-slate-300">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="20"
+								height="20"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="lucide lucide-circle-check-big text-primary-600"
+								aria-hidden="true"
+							>
+								<>
+									<path d="M21.801 10A10 10 0 1 1 17 3.335" />
+									<path d="m9 11 3 3L22 4" />
+								</>
+							</svg>
+							<span>{item}</span>
+						</div>
+					))
+				}
+			</div>
+
+			<event-carousel class="relative mt-6 block h-[88px]">
+				<div id="event-carousel" class="h-full">
+					{
+						nextClasses.length > 0 ? (
+							nextClasses.map((item: any, index: number) => (
+								<div
+									class={`event-card absolute inset-0 flex items-center justify-between gap-6 rounded-xl border border-slate-700 bg-slate-900/80 p-4 transition-opacity duration-500 ${index === 0 ? "active" : "pointer-events-none opacity-0"}`}
+									data-index={index}
+								>
+									<div class="w-3/4">
+										<div class="mb-2 text-[10px] tracking-wide text-slate-400 uppercase">
+											Upcoming
+										</div>
+										<div class="event-name line-clamp-2 translate-y-4 text-sm text-white opacity-0 transition-all duration-500">
+											{item.name}
+										</div>
+									</div>
+									<div class="w-1/4 text-right">
+										<div class="event-date translate-y-4 text-[10px] font-bold text-slate-400 uppercase opacity-0 transition-all delay-100 duration-500">
+											{formatDate(item.start_date)}
+										</div>
+										<div class="event-time text-primary-600/80 translate-y-4 text-xs opacity-0 transition-all delay-200 duration-500">
+											{formatTime(item.start_date)}
+										</div>
+									</div>
+								</div>
+							))
+						) : (
+							<div class="event-card active absolute inset-0 flex items-center justify-between gap-6 rounded-xl border border-slate-700 bg-slate-900/80 p-4">
+								<div class="w-3/4">
+									<div class="mb-2 text-xs tracking-wide text-slate-400 uppercase">Upcoming</div>
+									<div class="event-name text-white transition-all duration-500">
+										First Steps Shooting Course Virginia CCW Permit
+									</div>
+								</div>
+								<div class="w-1/4 text-right">
+									<div class="event-date mb-2 text-xs font-bold text-slate-400 uppercase transition-all duration-500">
+										Jan 8
+									</div>
+									<div class="event-time text-primary-600/80 transition-all duration-500">4PM</div>
+								</div>
+							</div>
+						)
+					}
+				</div>
+			</event-carousel>
+
+			<Button
+				variant="ghost"
+				href="#live-schedule"
+				arrow="right"
+				class="mt-4 w-full border border-slate-700 bg-slate-900/50 text-sm font-semibold text-white hover:bg-slate-700"
+			>
+				View All Schedules
+			</Button>
+		</div>
+	</div>
+</div>
+
+<script>
+	class EventCarousel extends HTMLElement {
+		private intervalId: number | undefined;
+
+		connectedCallback() {
+			this.init();
+		}
+
+		disconnectedCallback() {
+			if (this.intervalId) {
+				clearInterval(this.intervalId);
+			}
+		}
+
+		init() {
+			const carousel = this.querySelector("#event-carousel");
+			if (!carousel) return;
+
+			const cards = carousel.querySelectorAll(".event-card");
+			if (cards.length <= 1) {
+				// If only one card, ensure its internal items are visible
+				const singleCard = cards[0];
+				if (singleCard) {
+					singleCard.querySelectorAll(".event-name, .event-date, .event-time").forEach((el) => {
+						el.classList.remove("translate-y-4", "opacity-0");
+					});
+				}
+				return;
+			}
+
+			let currentIndex = 0;
+
+			// Initial state for the first card
+			const firstCardItems = cards[0].querySelectorAll(".event-name, .event-date, .event-time");
+			firstCardItems.forEach((el) => {
+				el.classList.remove("translate-y-4", "opacity-0");
+			});
+
+			this.intervalId = window.setInterval(() => {
+				const currentCard = cards[currentIndex];
+				const currentItems = currentCard.querySelectorAll(".event-name, .event-date, .event-time");
+
+				// Fade out internal items of the current card
+				currentItems.forEach((el) => {
+					el.classList.add("translate-y-[-4px]", "opacity-0");
+				});
+
+				// After items fade out, hide the card and reset items for next appearance
+				setTimeout(() => {
+					currentCard.classList.remove("active");
+					currentCard.classList.add("opacity-0", "pointer-events-none");
+
+					currentItems.forEach((el) => {
+						el.classList.remove("translate-y-[-4px]");
+						el.classList.add("translate-y-4");
+					});
+				}, 500);
+
+				currentIndex = (currentIndex + 1) % cards.length;
+
+				const nextCard = cards[currentIndex];
+				const nextItems = nextCard.querySelectorAll(".event-name, .event-date, .event-time");
+
+				// Show the next card container
+				setTimeout(() => {
+					nextCard.classList.remove("opacity-0", "pointer-events-none");
+					nextCard.classList.add("active");
+
+					// Staggered entry of new items
+					nextItems.forEach((el) => {
+						el.classList.remove("translate-y-4", "opacity-0");
+					});
+				}, 550);
+			}, 5500);
+		}
+	}
+
+	if (!customElements.get("event-carousel")) {
+		customElements.define("event-carousel", EventCarousel);
+	}
+</script>
+
+<style>
+	@keyframes fade-in-up {
+		0% {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	.animate-fade-in-up {
+		animation: fade-in-up 0.6s ease-out forwards;
+	}
+	.event-card {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	.event-card.active {
+		opacity: 1;
+		z-index: 10;
+	}
+</style>

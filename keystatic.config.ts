@@ -25,7 +25,7 @@ export default config({
 				React.createElement("img", {
 					src: isProd
 						? "https://livefireinstruction.com/.netlify/images?url=_astro%2FLogo.Bc52i4P5.png"
-						: "https://livefireinstructionblog.netlify.app/.netlify/images?url=_astro%2FLogo.Bc52i4P5.png",
+						: "https://livefireinstruction.netlify.app/.netlify/images?url=_astro%2FLogo.Bc52i4P5.png",
 					alt: "Live Fire Instruction",
 					style: { width: "100px", height: "auto" },
 				}),
@@ -109,10 +109,44 @@ export default config({
 					directory: "src/assets/homepage/images",
 					publicPath: "/src/assets/homepage/images/",
 				}),
-				firearmTraining: fields.relationship({
-					label: "Firearm Training",
-					collection: "partners",
+
+				// Next Class Starting Soon
+				nextClassStartingSoonTitle: fields.text({
+					label: "Next Class Starting Soon Title",
+					defaultValue: "Next Class Starting Soon",
 				}),
+				nextClassStartingSoonSubtitle: fields.text({
+					label: "Next Class Starting Soon Subtitle",
+					defaultValue: "Seats Limited",
+				}),
+				nextClassStartingArray: fields.array(
+					fields.text({ label: "Tag" }),
+					// Labelling options
+					{
+						label: "Tag",
+						itemLabel: (props) => props.value,
+					},
+				),
+
+				// CTASection
+				ctaSectionTitle: fields.text({
+					label: "CTA Section Title",
+					defaultValue: "Ready to Get Started?",
+				}),
+				ctaSectionSubtitle: fields.text({
+					label: "CTA Section Subtitle",
+					defaultValue:
+						"Join hundreds of instructors who trust Live Fire Instruction for their shooting range business",
+				}),
+				ctaSectionCtaText: fields.text({
+					label: "CTA Section CTA Text",
+					defaultValue: "Contact Us Today",
+				}),
+				ctaSectionCtaUrl: fields.text({
+					label: "CTA Section CTA URL",
+					defaultValue: "/contact",
+				}),
+
 				// Card Section
 				cardSectionTitle: fields.text({
 					label: "Card Section Title",

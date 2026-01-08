@@ -2,6 +2,7 @@
 // components
 import Hero from "@components/Hero/Hero.astro";
 import CourseCard from "@components/CourseCard/CourseCard.astro";
+import LiveSchedule from "@components/LiveSchedule/LiveSchedule.astro";
 // data
 import siteData from "@config/siteData.json";
 // utils
@@ -11,6 +12,7 @@ import { MoveRight } from "lucide-react";
 import IframeComponent from "@/components/IframeComponent/IframeComponent.astro";
 
 import { getKeystaticReader } from "@/lib/keystatic-reader";
+import CTASection from "@/components/CTASection/CTASection.astro";
 
 const reader = getKeystaticReader();
 const homepage = await reader.singletons.homepage.read();
@@ -42,8 +44,8 @@ const schemaData = {
 ---
 
 <BaseLayout
-	title={"Home - " + siteData.title}
-	description={siteData.description}
+	title="Live Fire Instruction | Firearm Safety & Virginia CCW Training"
+	description="Expert firearm training in Fairfax & Northern Virginia. NRA certified courses, concealed carry classes, and personal instruction for all skill levels."
 	schemaType="home"
 	schemaData={schemaData}
 >
@@ -68,9 +70,8 @@ const schemaData = {
 			<CourseCard />
 		</div>
 	</section>
-	<section class="bg-blue-dark py-16 md:py-24">
-		<div class="site-container text-center">
-			<IframeComponent height={iframeHeight} width={iframeWidth} src={iframeUrl} />
-		</div>
-	</section>
+
+	<LiveSchedule />
+
+	<CTASection />
 </BaseLayout>
