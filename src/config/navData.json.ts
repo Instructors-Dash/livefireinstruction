@@ -38,11 +38,11 @@ const navConfig: navItem[] = [
 	// },
 	{
 		text: "Training",
-		link: "/firearm-training/",
+		link: "/firearm-training",
 		dropdown: [
 			{
 				text: "NRA Basic Pistol Course & VA Concealed Carry Permit",
-				link: "/nra-basic-pistol-shooting-course/",
+				link: "/nra-basic-pistol-shooting-course",
 			},
 			{
 				text: "First Step Pistol Orientation with Concealed Carry Permit",
@@ -50,11 +50,11 @@ const navConfig: navItem[] = [
 			},
 			{
 				text: "One-on-One Personal Training",
-				link: "/one-on-one-instruction/",
+				link: "/one-on-one-instruction",
 			},
 			{
 				text: "NRA CCW Advanced Pistol Course",
-				link: "/nra-defensive-pistol-course/",
+				link: "/nra-defensive-pistol-course",
 			},
 			{
 				text: "NRA Refuse To Be A Victim®",
@@ -104,21 +104,21 @@ const navConfig: navItem[] = [
 		dropdown: [
 			{
 				text: "3-Day Bullseye Business Blueprint Course",
-				link: "/3-day-bullseye-business-blueprint-course/",
+				link: "/3-day-bullseye-business-blueprint-course",
 			},
 		],
 	},
 	{
 		text: "Course Calendar",
-		link: "/calendar/",
+		link: "/calendar",
 	},
 	{
 		text: "Partners",
-		link: "/partners/",
+		link: "/partners",
 	},
 	{
 		text: "Contact Us",
-		link: "/contact/",
+		link: "/contact",
 	},
 ];
 
