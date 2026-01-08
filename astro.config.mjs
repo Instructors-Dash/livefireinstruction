@@ -84,5 +84,6 @@ export default defineConfig({
 		"/product-category/[...slug]": "/firearm-training",
 		"/nra-basics-of-pistol-shooting-course-with-concealed-carry-permit-silver-eagle":
 			"/nra-basic-pistol-shooting-course",
+		"/about-us": "/",
 	},
 });

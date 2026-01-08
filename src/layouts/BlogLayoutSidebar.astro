@@ -12,6 +12,7 @@ import BlogPostRelatedPosts from "@components/BlogPostRelatedPosts.astro";
 
 import BaseLayout from "./BaseLayout.astro";
 import siteData from "@/config/siteData.json";
+import Comments from "@/components/Comment/Comments.astro";
 
 interface Props {
 	post: CollectionEntry<"blog">;
@@ -139,6 +140,8 @@ const schemaData = {
 
 						<!-- end of post, extra stuff (like share buttons) here -->
 						<hr class="border-accent my-4 w-full border-t-2" />
+
+						<Comments postSlug={post.id} />
 
 						<!-- button to go back to all posts -->
 						<div class="flex">
