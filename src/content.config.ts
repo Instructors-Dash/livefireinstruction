@@ -135,6 +135,7 @@ const trainingCollection = defineCollection({
 			iframeUrl: z.string().url().optional(),
 			iframeHeight: z.number().optional(),
 			iframeWidth: z.string().optional(),
+			useCategory133: z.boolean().optional(),
 		}),
 });
 

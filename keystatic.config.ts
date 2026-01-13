@@ -514,6 +514,10 @@ export default config({
 					validation: { isRequired: true },
 					defaultValue: "1200",
 				}),
+				useCategory133: fields.checkbox({
+					label: "Use Category 133 for Live Schedule",
+					defaultValue: true,
+				}),
 
 				content: fields.markdoc({
 					label: "Content",

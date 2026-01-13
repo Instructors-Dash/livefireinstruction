@@ -178,7 +178,9 @@ const schemaData = {
 		<div class="site-container mx-auto px-4 text-center">
 			<Content />
 		</div>
-		<LiveSchedule category="133" />
+		<div id="iframe">
+			<LiveSchedule category={item.id === "first-step-pistol-orientation" ? "all" : "133"} />
+		</div>
 </BaseLayout>
 
 <style is:inline>
