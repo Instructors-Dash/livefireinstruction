@@ -1,5 +1,6 @@
 ---
 import Button from "@components/Button/Button.astro";
+import EventCarousel from "./EventCarousel.astro";
 
 import { getKeystaticReader } from "@/lib/keystatic-reader";
 const reader = getKeystaticReader();
@@ -8,37 +9,6 @@ const nextClassStartingSoonTitle =
 	homepage?.nextClassStartingSoonTitle || "Next Class Starting Soon";
 const nextClassStartingSoonSubtitle = homepage?.nextClassStartingSoonSubtitle || "Seats Limited";
 const nextClassStartingArray = homepage?.nextClassStartingArray || [];
-
-// Fetch next up to 3 upcoming classes for the sidebar
-let nextClasses = [];
-try {
-	const response = await fetch("https://instructorsdash.com/api/public/events/livefireinstruction");
-	if (response.ok) {
-		const data = await response.json();
-		nextClasses = data.events?.data?.slice(0, 3) || [];
-	}
-} catch (error) {
-	console.error("Error fetching events for Hero Feed:", error);
-}
-
-const formatDate = (dateStr: string) => {
-	const date = new Date(dateStr);
-	return date.toLocaleDateString("en-US", {
-		month: "short",
-		day: "numeric",
-		timeZone: "America/New_York",
-	});
-};
-
-const formatTime = (dateStr: string) => {
-	const date = new Date(dateStr);
-	return date.toLocaleTimeString("en-US", {
-		hour: "numeric",
-		minute: "2-digit",
-		hour12: true,
-		timeZone: "America/New_York",
-	});
-};
 ---
 
 <div class="relative mt-0 md:block md:w-2/5">
@@ -105,44 +75,23 @@ const formatTime = (dateStr: string) => {
 
 			<div class="mt-6 block">
 				<div id="event-carousel" class="h-full">
-					{
-						nextClasses.length > 0 ? (
-							(() => {
-								const item = nextClasses[0];
-								return (
-									<div class="active flex h-full items-center justify-between gap-6 rounded-xl border border-slate-700 bg-slate-900/80 p-4">
-										<div class="w-3/4">
-											<div class="mb-2 text-[10px] tracking-wide text-slate-400 uppercase">
-												Upcoming
-											</div>
-											<div class="text-sm text-white">{item.name}</div>
-										</div>
-										<div class="w-1/4 text-right">
-											<div class="text-[10px] font-bold text-slate-400 uppercase">
-												{formatDate(item.start_date)}
-											</div>
-											<div class="text-primary-600/80 text-xs">{formatTime(item.start_date)}</div>
-										</div>
-									</div>
-								);
-							})()
-						) : (
-							<div class="active flex h-full items-center justify-between gap-6 rounded-xl border border-slate-700 bg-slate-900/80 p-4">
-								<div class="w-3/4">
-									<div class="mb-2 text-xs tracking-wide text-slate-400 uppercase">Upcoming</div>
-									<div class="event-name text-white transition-all duration-500">
-										First Steps Shooting Course Virginia CCW Permit
-									</div>
-								</div>
-								<div class="w-1/4 text-right">
-									<div class="event-date mb-2 text-xs font-bold text-slate-400 uppercase transition-all duration-500">
-										Jan 8
-									</div>
-									<div class="event-time text-primary-600/80 transition-all duration-500">4PM</div>
+					<EventCarousel server:defer>
+						<div
+							slot="fallback"
+							class="active flex h-full items-center justify-between gap-6 rounded-xl border border-slate-700 bg-slate-900/80 p-4"
+						>
+							<div class="w-3/4">
+								<div class="mb-2 text-xs tracking-wide text-slate-400 uppercase">Upcoming</div>
+								<div class="event-name text-white transition-all duration-500">
+									Loading upcoming courses...
 								</div>
 							</div>
-						)
-					}
+							<div class="w-1/4 animate-pulse text-right">
+								<div class="mb-2 ml-auto h-4 w-12 rounded bg-slate-700"></div>
+								<div class="ml-auto h-4 w-8 rounded bg-slate-700/50"></div>
+							</div>
+						</div>
+					</EventCarousel>
 				</div>
 			</div>
 

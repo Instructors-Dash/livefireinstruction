@@ -18,6 +18,15 @@ const { category } = Astro.props;
 				Join our expert-led sessions and develop your firearm skills in a safe, professional
 				environment.
 			</p>
+			<a
+				href="https://instructorsdash.com/lisa-chau/categories/all"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-primary mt-4 inline-flex items-center gap-2 font-semibold hover:underline md:text-lg"
+			>
+				View Full Calendar Site
+				<ArrowRight size={20} />
+			</a>
 		</div>
 
 		{/* Skeleton Loader - Visible while loading */}
@@ -77,16 +86,6 @@ const { category } = Astro.props;
 			>
 				Show More Classes
 			</button>
-
-			<a
-				href="https://instructorsdash.com/lisa-chau/categories/all"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="text-blue inline-flex items-center gap-2 font-semibold hover:underline md:text-lg"
-			>
-				View Full Calendar Site
-				<ArrowRight size={20} />
-			</a>
 		</div>
 	</div>
 </section>
@@ -179,8 +178,9 @@ const { category } = Astro.props;
 							href="https://livefireinstruction.instructorsdash.com/e/lisa-chau/${event.short_slug}"
 							target="_blank"
 							rel="noopener noreferrer"
-							class="bg-blue hover:bg-blue-dark mt-6 flex items-center justify-center gap-2 rounded-xl py-3 font-semibold text-white transition-colors active:scale-[0.98]"
-						>
+							class="regnow bg-blue hover:bg-blue-dark mt-6 flex items-center justify-center gap-2 rounded-xl py-3 font-semibold text-white transition-colors active:scale-[0.98]"
+							title="${event.name}"
+							>
 							Register Now
 							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 						</a>
