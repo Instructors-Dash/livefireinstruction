@@ -298,7 +298,7 @@ export default config({
 				heroImage: fields.image({
 					label: "Image",
 					directory: "src/assets/images/blog",
-					publicPath: "@assets/images/blog/",
+					publicPath: "/src/assets/images/blog/",
 				}),
 				categories: fields.array(
 					fields.text({ label: "Category", validation: { isRequired: true } }),
