@@ -99,15 +99,7 @@ const navConfig: navItem[] = [
 	// 		};
 	// 	}),
 	// },
-	{
-		text: "Business Training",
-		dropdown: [
-			{
-				text: "3-Day Bullseye Business Blueprint Course",
-				link: "/3-day-bullseye-business-blueprint-course",
-			},
-		],
-	},
+
 	{
 		text: "Course Calendar",
 		link: "/calendar",
@@ -119,6 +111,15 @@ const navConfig: navItem[] = [
 	{
 		text: "Contact Us",
 		link: "/contact",
+	},
+	{
+		text: "Business Training",
+		dropdown: [
+			{
+				text: "3-Day Bullseye Business Blueprint Course",
+				link: "/3-day-bullseye-business-blueprint-course",
+			},
+		],
 	},
 ];
 

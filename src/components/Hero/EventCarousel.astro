@@ -8,7 +8,6 @@ try {
 	if (response.ok) {
 		const data = await response.json();
 		nextClasses = data.events?.data?.slice(0, 3) || [];
-		console.log(nextClasses);
 	}
 } catch (error) {
 	console.error("Error fetching events for Hero Feed:", error);
