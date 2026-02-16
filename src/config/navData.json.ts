@@ -46,7 +46,7 @@ const navConfig: navItem[] = [
 			},
 			{
 				text: "First Step Pistol Orientation with Concealed Carry Permit",
-				link: "/first-step-pistol-orientation/",
+				link: "/first-step-pistol-orientation",
 			},
 			{
 				text: "One-on-One Personal Training",

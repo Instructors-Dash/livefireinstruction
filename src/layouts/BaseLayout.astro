@@ -10,6 +10,7 @@ import GoogleTagmanagerNoscript from "@/components/GoogleTagmanagerNoscript/Goog
 
 import Schema from "@/components/Schema/Schema.astro";
 import { Toaster } from "@/components/ui/sonner";
+import BackToTop from "@/components/BackToTop/BackToTop.astro";
 const { schemaType = "organization", schemaData = {} } = Astro.props;
 
 // heroImage and authorData are defined on blog posts
@@ -100,6 +101,7 @@ const {
 			</main>
 		</div>
 		<Footer />
+		<BackToTop />
 		<Toaster client:load transition:persist />
 	</body>
 </html>
