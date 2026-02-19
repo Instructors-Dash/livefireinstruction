@@ -118,7 +118,7 @@
 
 		/* Hero Section */
 		.hero-section {
-			background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+			background: linear-gradient(135deg, oklch(0.76 0.18 62.44) 0%, oklch(0.79 0.1 67.14) 100%);
 			color: white;
 			padding: 60px 40px;
 			border-radius: 12px;
@@ -141,7 +141,8 @@
 		/* CTA Buttons */
 		.cta-button {
 			display: inline-block;
-			background: #dc2626;
+			/* background: #dc2626; */
+			@apply bg-blue;
 			color: white;
 			padding: 14px 32px;
 			text-decoration: none;
@@ -153,9 +154,10 @@
 		}
 
 		.cta-button:hover {
-			background: #b91c1c;
-			transform: translateY(-2px);
-			box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+			/* background: #b91c1c; */
+			@apply bg-blue-dark;
+			/* transform: translateY(-2px); */
+			/* box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4); */
 		}
 
 		/* Course Grid */
@@ -282,7 +284,7 @@
 
 		/* Final CTA Section */
 		.final-cta {
-			background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+			/* background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); */
 			color: white;
 			padding: 60px 40px;
 			text-align: center;
