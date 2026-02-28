@@ -4,7 +4,7 @@ This is a free theme for Astro created by [Cosmic Themes](https://cosmicthemes.c
 
 [website demo](https://blogsmithfree.cosmicthemes.com/)
 
-## Quickstart
+## Quickstart.
 
 1. Fork this project to your own repository, and clone it to your local machine
 2. Install all necessary packages with `npm install` or `pnpm install`
