@@ -25,7 +25,9 @@ export default defineConfig({
 			wrap: true,
 		},
 	},
-
+	server: {
+		allowedHosts: "devserver-main--livefireinstructionprod.netlify.app",
+	},
 	integrations: [
 		// example auto import component into blog post mdx files
 		AutoImport({
