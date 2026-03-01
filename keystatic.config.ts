@@ -13,7 +13,7 @@ export default config({
 		kind: "cloud",
 	},
 	cloud: {
-		project: "livefireinstruction/prod",
+		project: "livefireinstruction/lfi-prod",
 	},
 	ui: {
 		brand: {
