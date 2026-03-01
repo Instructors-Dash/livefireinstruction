@@ -1,23 +1,20 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
 import React from "react";
 
-const repo = {
-	owner: "Instructors-Dash",
-	name: "livefireinstruction",
-};
+// const repo = {
+// 	owner: "Instructors-Dash",
+// 	name: "livefireinstruction",
+// };
 
 const isProd = import.meta.env.PROD || import.meta.env.MODE === "production";
 
 export default config({
-	storage: isProd
-		? {
-				kind: "github",
-				repo: `${repo.owner}/${repo.name}`,
-				branchPrefix: "main/",
-			}
-		: {
-				kind: "local",
-			},
+	storage: {
+		kind: "cloud",
+	},
+	cloud: {
+		project: "livefireinstruction/prod",
+	},
 	ui: {
 		brand: {
 			name: "Admin",
